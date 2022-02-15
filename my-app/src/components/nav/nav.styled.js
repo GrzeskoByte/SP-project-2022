@@ -1,16 +1,20 @@
 import styled from "styled-components";
 
 export const NavContainer = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   height: 6vh;
-  border-bottom: 4px solid cadetblue;
-  min-width: 590px;
+  min-width: 1070px;
+  width: 100%;
+  z-index: 999;
   & > ul {
     display: flex;
     justify-content: end;
     align-items: center;
-    background-color: black;
+    background-color: white;
     list-style: none;
     font-size: 0.9rem;
     font-weight: bold;
@@ -33,7 +37,18 @@ export const NavContainer = styled.nav`
 
     & > li > a {
       text-decoration: none;
-      color: white;
+      color: black;
     }
   }
+`;
+
+export const AnimateBar = styled.div`
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 5px;
+  transition: 1s;
+  width: ${(props) => props.levelOfFill}%;
+  background-color: #000;
 `;

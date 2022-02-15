@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-import { NavContainer } from "./nav.styled";
+import { NavContainer, AnimateBar } from "./nav.styled";
 
 import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
+  const [fillDegree, setFillDegree] = useState(0);
+
+  const handleScroll = () => {
+    const heightOfSite = document.body.clientHeight;
+
+    const degree = (window.scrollY / heightOfSite) * 200;
+
+    setFillDegree(degree);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll");
+    };
+  }, []);
+
   return (
     <NavContainer>
       <ul>
@@ -29,6 +46,7 @@ const Navigation = () => {
           <NavLink to="/">Kontakt</NavLink>
         </li>
       </ul>
+      <AnimateBar levelOfFill={fillDegree} />
     </NavContainer>
   );
 };
