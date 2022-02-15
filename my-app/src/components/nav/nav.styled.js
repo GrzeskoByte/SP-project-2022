@@ -5,8 +5,6 @@ export const NavContainer = styled.nav`
   justify-content: center;
   height: 6vh;
   border-bottom: 4px solid cadetblue;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
   min-width: 590px;
   & > ul {
     display: flex;
@@ -20,7 +18,7 @@ export const NavContainer = styled.nav`
 
     & > li:nth-of-type(1) {
       flex-grow: 5;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
     }
 
     & > li {

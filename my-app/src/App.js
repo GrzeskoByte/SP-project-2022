@@ -1,4 +1,5 @@
-import { default as Nav } from "./components/nav/Nav.js";
+import { default as Nav } from "./components/nav/Nav.jsx";
+import Header from "./components/header/Header.jsx";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -13,7 +14,12 @@ const App = () => {
 };
 
 const AppOnDefaultPath = () => {
-  return <Nav />;
+  return (
+    <>
+      <Nav />
+      <Header />
+    </>
+  );
 };
 
 export default App;
