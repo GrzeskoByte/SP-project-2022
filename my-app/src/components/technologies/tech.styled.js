@@ -38,7 +38,7 @@ export const StyledCard = styled.div`
     border: none;
     border-radius: 2px;
     line-height: 2vh;
-    width: 5vw;
+    width: auto;
     text-transform: capitalize;
     font-style: oblique;
     font-weight: bold;
