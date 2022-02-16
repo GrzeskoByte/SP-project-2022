@@ -48,7 +48,7 @@ export const AnimateBar = styled.div`
   bottom: 0;
   left: 0;
   height: 5px;
-  transition: 1s;
+  transition: 0.2s;
   width: ${(props) => props.levelOfFill}%;
   background-color: #000;
 `;

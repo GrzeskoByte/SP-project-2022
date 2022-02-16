@@ -1,6 +1,8 @@
 import { default as Nav } from "./components/nav/Nav.jsx";
 import Header from "./components/header/Header.jsx";
 import Offer from "./components/Offer/Offer.jsx";
+import AboutUs from "./components/aboutUs/AboutUs.jsx";
+import Tech from "./components/technologies/Tech.jsx";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -20,6 +22,8 @@ const AppOnDefaultPath = () => {
       <Nav />
       <Header />
       <Offer />
+      <AboutUs />
+      <Tech />
     </>
   );
 };
