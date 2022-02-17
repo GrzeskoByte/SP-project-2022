@@ -90,6 +90,10 @@ const MobileNav = (props) => {
 
   return (
     <MobileNavContainer>
+      <div>
+        <span style={{ color: "green" }}>SP</span> PROJEKT
+      </div>
+
       <FontAwesomeIcon
         icon={faBars}
         style={{

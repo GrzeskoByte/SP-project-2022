@@ -9,7 +9,6 @@ export const StyledHeader = styled.header`
   min-width: 1060px;
   background-color: rgba(0, 0, 0, 0.8);
   overflow: hidden;
-  z-index: 3;
 `;
 
 export const HeaderCard = styled.div`
@@ -26,7 +25,6 @@ export const HeaderCard = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  z-index: 2;
 
   &:hover {
     cursor: pointer;
@@ -41,16 +39,11 @@ export const HeaderCard = styled.div`
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
   }
 
   & > h3 {
     position: relative;
     z-index: 2;
-  }
-
-  & > h3 {
-    z-index: 3;
     font-size: 1.8rem;
     color: white;
   }
@@ -72,5 +65,38 @@ export const Tags = styled.section`
     background-color: black;
     color: white;
     z-index: 2;
+  }
+`;
+
+export const StyledMobileHeader = styled.header`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 100%;
+  background: url(${(props) => props.img});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: white;
+  text-transform: uppercase;
+
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    cursor: pointer;
+  }
+  & > h2 {
+    cursor: pointer;
+    z-index: 3;
   }
 `;

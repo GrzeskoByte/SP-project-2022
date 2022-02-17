@@ -83,12 +83,17 @@ export const MobileNavContainer = styled.div`
   top: 0;
   left: 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: 0 20px;
   width: 100%;
   height: 6vh;
   background-color: #fff;
+  z-index: 4;
+  & > div {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
 `;
 
 export const StyledMobileNav = styled.nav`
@@ -100,7 +105,6 @@ export const StyledMobileNav = styled.nav`
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  z-index: 4;
   color: white;
   background-color: black;
 
