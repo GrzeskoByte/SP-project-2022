@@ -6,8 +6,9 @@ const AboutUs = () => {
     <StyledAboutUs>
       <div className="firstOfferSec"></div>
       <div className="secondOfferSec">
+        <h2>Twój architekt</h2>
+
         <p>
-          <h2>Twój architekt</h2>
           Jestem absolwentem Politechniki Gdańskiej. Projektowaniem zajmuję się
           od ponad 25 lat, własną działalność prowadzę od 4 lat. W tym czasie
           zaprojektowałem niezliczoną ilość obiektów budowlanych. Są to między

@@ -2,6 +2,9 @@ import React from "react";
 
 import { StyledFooter } from "./footer.styled";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faPhone, faHome } from "@fortawesome/free-solid-svg-icons";
+
 const Footer = () => {
   return (
     <StyledFooter>
@@ -11,14 +14,43 @@ const Footer = () => {
           <li>FAQ</li>
         </ul>
       </div>
-      <div className="contact">
-        <ul>
-          <li>+48 793 016 774</li>
-          <li>Starogard Gdański ul.Hallera 13</li>
-          <li>piotr@spprojekt.eu LUB agnieszka@spprojekt.eu</li>
-        </ul>
-      </div>
+
+      <ContactList />
     </StyledFooter>
+  );
+};
+
+const ContactList = () => {
+  return (
+    <div className="contact">
+      <ul>
+        <li>
+          {" "}
+          <FontAwesomeIcon
+            icon={faPhone}
+            color="white"
+            style={{ margin: "0 5px" }}
+          />
+          +48 793 016 774
+        </li>
+        <li>
+          <FontAwesomeIcon
+            icon={faHome}
+            color="white"
+            style={{ margin: "0 5px" }}
+          />
+          Starogard Gdański ul.Hallera 13
+        </li>
+        <li>
+          <FontAwesomeIcon
+            icon={faEnvelope}
+            color="white"
+            style={{ margin: "0 5px" }}
+          />
+          piotr@spprojekt.eu LUB agnieszka@spprojekt.eu
+        </li>
+      </ul>
+    </div>
   );
 };
 

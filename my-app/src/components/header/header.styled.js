@@ -9,6 +9,7 @@ export const StyledHeader = styled.header`
   min-width: 1060px;
   background-color: rgba(0, 0, 0, 0.8);
   overflow: hidden;
+  z-index: 3;
 `;
 
 export const HeaderCard = styled.div`
@@ -25,6 +26,7 @@ export const HeaderCard = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  z-index: 2;
 
   &:hover {
     cursor: pointer;

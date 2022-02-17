@@ -9,7 +9,7 @@ export const NavContainer = styled.nav`
   height: 6vh;
   min-width: 1070px;
   width: 100%;
-  z-index: 999;
+  z-index: 4;
   & > ul {
     display: flex;
     justify-content: end;
@@ -35,10 +35,35 @@ export const NavContainer = styled.nav`
       text-transform: uppercase;
     }
 
+    & > li:hover {
+      border-bottom: 3px solid black;
+    }
+    & > li:nth-of-type(1):hover {
+      border-bottom: none;
+    }
+
     & > li > a {
       text-decoration: none;
       color: black;
     }
+  }
+  @media (max-width: 1024px) {
+    min-width: 530px;
+
+    & > li:nth-of-type(1) {
+      flex-grow: 3;
+      font-size: 1rem;
+    }
+  }
+  @media (max-width: 750px) {
+    min-width: 530px;
+    & > ul {
+      font-size: 0.7rem;
+    }
+  }
+
+  @media (max-width: 530px) {
+    display: none;
   }
 `;
 
@@ -51,4 +76,65 @@ export const AnimateBar = styled.div`
   transition: 0.2s;
   width: ${(props) => props.levelOfFill}%;
   background-color: #000;
+`;
+
+export const MobileNavContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 6vh;
+  background-color: #fff;
+`;
+
+export const StyledMobileNav = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: ${(props) => (props.isOpen ? "flex" : "none")};
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  z-index: 4;
+  color: white;
+  background-color: black;
+
+  & > ul {
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    font-size: 1.3rem;
+    font-weight: bold;
+    flex-grow: 1;
+
+    & > li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      margin: 10px 0;
+      padding: 5px 10px;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    & > li:hover {
+      border-bottom: 3px solid black;
+    }
+    & > li:nth-of-type(1):hover {
+      border-bottom: none;
+    }
+
+    & > li > a {
+      text-decoration: none;
+      color: white;
+    }
+  }
 `;
