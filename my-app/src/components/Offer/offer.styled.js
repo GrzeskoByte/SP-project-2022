@@ -6,7 +6,10 @@ export const StyledOffer = styled.section`
   height: 70vh;
   background-color: royalblue;
   min-width: 1200px;
-
+  @media (max-width: 812px) {
+    grid-template-areas: "A";
+    min-width: 375px;
+  }
   & > #firstOfferSec {
     display: flex;
     flex-direction: column;
@@ -15,6 +18,10 @@ export const StyledOffer = styled.section`
     grid-area: A;
     background-color: white;
     text-align: left;
+    @media (max-width: 812px) {
+      padding: 0 25px;
+      text-align: center;
+    }
 
     & > ul {
       list-style: none;
@@ -31,5 +38,8 @@ export const StyledOffer = styled.section`
     justify-content: center;
     align-items: center;
     background-color: black;
+    @media (max-width: 812px) {
+      display: none;
+    }
   }
 `;
