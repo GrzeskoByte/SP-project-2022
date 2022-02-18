@@ -4,6 +4,9 @@ export const StyledTech = styled.section`
   padding: 10px 30px 10px 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
   grid-gap: 20px;
   grid-auto-rows: minmax(100px, auto);
 `;
@@ -46,5 +49,34 @@ export const StyledCard = styled.div`
     background-color: black;
     color: white;
     cursor: pointer;
+  }
+
+  @media (max-width: 1100px) {
+    grid-column: 1/4;
+
+    &:nth-of-type(2) {
+      grid-column: 4/7;
+    }
+    &:nth-of-type(3) {
+      grid-column: 1/7;
+      grid-row: 5/9;
+    }
+  }
+
+  @media (max-width: 650px) {
+    min-width: 350px;
+    grid-column: 1/7;
+    grid-row: 1/4;
+    &:nth-of-type(2) {
+      grid-column: 1/7;
+      grid-row: 4/7;
+    }
+    &:nth-of-type(3) {
+      grid-column: 1/7;
+      grid-row: 7/10  ;
+    }
+    & > a > button {
+      width: 50vw;
+    }
   }
 `;

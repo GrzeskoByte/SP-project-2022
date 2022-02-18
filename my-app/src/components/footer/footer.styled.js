@@ -6,6 +6,7 @@ export const StyledFooter = styled.footer`
   grid-gap: 20px;
   grid-auto-rows: minmax(100px, auto);
   height: 15vh;
+  min-width: 550px;
   background-color: black;
 
   & > div > ul {
@@ -30,6 +31,7 @@ export const StyledFooter = styled.footer`
     align-items: center;
     grid-column: 1;
     grid-row: 1;
+    padding: 0 15px;
   }
   & > .links {
     display: flex;
@@ -38,5 +40,22 @@ export const StyledFooter = styled.footer`
     align-items: center;
     grid-column: 2;
     grid-row: 1;
+    padding: 0 15px;
+  }
+
+  @media (max-width: 500px) {
+    grid-gap: 0px;
+    & > .contact {
+      align-items: flex-start;
+      margin: 0 auto;
+      grid-column: 1;
+      grid-row: 1;
+    }
+    & > .links {
+      align-items: flex-start;
+      grid-column: 1/3;
+      grid-row: 2;
+      background-color: black;
+    }
   }
 `;

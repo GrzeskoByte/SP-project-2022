@@ -7,6 +7,7 @@ export const StyledOffer = styled.section`
   background-color: royalblue;
   min-width: 1200px;
   @media (max-width: 812px) {
+    height: 50vh;
     grid-template-areas: "A";
     min-width: 375px;
   }

@@ -10,7 +10,7 @@ import {
 import { NavLink } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = () => {
   const [fillDegree, setFillDegree] = useState(0);
@@ -63,10 +63,10 @@ const DesktopNav = (props) => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/">O Nas</NavLink>
+          <NavLink to="/">Oferta</NavLink>
         </li>
         <li>
-          <NavLink to="/">Oferta</NavLink>
+          <NavLink to="/">O Nas</NavLink>
         </li>
         <li>
           <NavLink to="/">Technologie</NavLink>
@@ -88,32 +88,44 @@ const MobileNav = (props) => {
 
   const handleClick = () => setIsOpen(!isOpen);
 
+  const styles = {
+    fontSize: "20px",
+    cursor: "pointer",
+    zIndex: "5",
+    color: `${isOpen ? "white" : "black"}`,
+    transition: "0.5s",
+  };
+
   return (
     <MobileNavContainer>
       <div>
         <span style={{ color: "green" }}>SP</span> PROJEKT
       </div>
+      {isOpen ? (
+        <FontAwesomeIcon
+          icon={faTimes}
+          style={styles}
+          className="bar"
+          onClick={handleClick}
+        />
+      ) : (
+        <FontAwesomeIcon
+          icon={faBars}
+          style={styles}
+          className="bar"
+          onClick={handleClick}
+        />
+      )}
 
-      <FontAwesomeIcon
-        icon={faBars}
-        style={{
-          fontSize: "20px",
-          cursor: "pointer",
-          zIndex: "5",
-          color: `${isOpen ? "white" : "black"}`,
-        }}
-        className="bar"
-        onClick={handleClick}
-      />
       <AnimateBar levelOfFill={props.fill} />
 
       <StyledMobileNav isOpen={isOpen}>
         <ul>
           <li>
-            <NavLink to="/">O Nas</NavLink>
+            <NavLink to="/">Oferta</NavLink>
           </li>
           <li>
-            <NavLink to="/">Oferta</NavLink>
+            <NavLink to="/">O Nas</NavLink>
           </li>
           <li>
             <NavLink to="/">Technologie</NavLink>
