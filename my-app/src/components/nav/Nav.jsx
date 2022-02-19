@@ -25,20 +25,23 @@ const Navigation = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    const handleResize = () => {
+      if (window.innerWidth < 530) {
+        setIsVisible(false);
+      } else setIsVisible(true);
+    };
+
     if (window.innerWidth < 530) {
       setIsVisible(false);
     } else setIsVisible(true);
 
-    window.addEventListener("resize", () => {
-      if (window.innerWidth < 530) {
-        setIsVisible(false);
-      } else setIsVisible(true);
-    });
+    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("scroll");
-      window.removeEventListener("resize");
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
