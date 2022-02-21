@@ -1,8 +1,12 @@
-import React, { useEffect } from "react";
-
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 import { NavLink } from "react-router-dom";
+
+import sanityClient from "../../client";
+
+import imageUrlBuilder from "@sanity/image-url";
+
+import MobileMenu from "./MobileMenu";
 
 import {
   StyledGallery,
@@ -11,41 +15,67 @@ import {
   GalleryMenu,
 } from "./gallery.styled.js";
 
-function importAll(r) {
-  return r.keys().map(r);
-}
-
 const Gallery = () => {
-  let galleryItems = [];
-  let data;
-  const images = importAll(
-    require.context("../../images", false, /\.(png|jpe?g|svg)$/)
-  );
+  const [images, setImages] = useState(null);
 
-  for (let i = 0; i < images.length; i = i + 3) {
-    galleryItems.push(
-      <GalleryItem images={[images[i], images[i + 1], images[i + 2]]} key={i} />
-    );
-  }
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  const builder = imageUrlBuilder(sanityClient);
+
+  const urlFor = (source) => {
+    return builder.image(source);
+  };
+
+  const fetchAll = async () => {
+    let images = [];
+
+    await sanityClient.fetch(`*[_type=='galleryImage'].images`).then((res) => {
+      return res.map((item) => {
+        return item.map((item) => {
+          return images.push(item.asset._ref);
+        });
+      });
+    });
+    setImages(images);
+  };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:9000/testAPI")
-      .then((res) => {
-        data = res;
-      })
-      .then(() => {
-        console.log(data);
-      });
+    const handleResize = () => {
+      if (window.innerWidth < 900) {
+        setIsMobile(true);
+      } else setIsMobile(false);
+    };
+
+    if (window.innerWidth < 900) {
+      setIsMobile(true);
+    } else setIsMobile(false);
+
+    window.addEventListener("resize", handleResize);
+    fetchAll();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
     <GalleryContainer>
-      <Menu />
+      {isMobile ? (
+        <MobileMenu isOpen={isMobileOpen} setIsOpen={setIsMobileOpen} />
+      ) : (
+        <Menu />
+      )}
       <StyledGallery>
-        {galleryItems.map((item) => {
-          return item;
-        })}
+        <ImagesContainer>
+          {images !== null
+            ? images.map((imgUrl, index) => {
+                return (
+                  <img src={urlFor(imgUrl).url()} key={index} alt="building" />
+                );
+              })
+            : ""}
+        </ImagesContainer>
       </StyledGallery>
     </GalleryContainer>
   );
@@ -61,21 +91,11 @@ const Menu = () => {
               <span>SP</span> PROJEKT
             </h1>
           </li>
-          <li>
-            <NavLink to="/">Wszystko</NavLink>
-          </li>
-          <li>
-            <NavLink to="/">Jednorodzinne</NavLink>
-          </li>
-          <li>
-            <NavLink to="/">Wielorodzinne</NavLink>
-          </li>
-          <li>
-            <NavLink to="/">Użyteczności publicznej</NavLink>
-          </li>
-          <li>
-            <NavLink to="/">Usługowe</NavLink>
-          </li>
+          <li>Wszystko</li>
+          <li>Jednorodzinne</li>
+          <li>Wielorodzinne</li>
+          <li>Użyteczności publicznej</li>
+          <li>Usługowe</li>
 
           <li>
             <NavLink to="/">Powrót</NavLink>
@@ -83,17 +103,6 @@ const Menu = () => {
         </ul>
       </nav>
     </GalleryMenu>
-  );
-};
-
-const GalleryItem = (props) => {
-  const { images } = props;
-  return (
-    <ImagesContainer>
-      <img src={images[0]} alt="galleryImage" />
-      <img src={images[1]} alt="galleryImage" />
-      <img src={images[2]} alt="galleryImage" />
-    </ImagesContainer>
   );
 };
 

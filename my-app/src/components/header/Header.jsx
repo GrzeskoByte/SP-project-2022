@@ -18,18 +18,20 @@ const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 530) {
+        setIsVisible(false);
+      } else setIsVisible(true);
+    };
+
     if (window.innerWidth < 530) {
       setIsVisible(false);
     } else setIsVisible(true);
 
-    window.addEventListener("resize", () => {
-      if (window.innerWidth < 530) {
-        setIsVisible(false);
-      } else setIsVisible(true);
-    });
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize");
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
