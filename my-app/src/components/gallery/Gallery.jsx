@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 
-import { NavLink } from "react-router-dom";
-
 import sanityClient from "../../client";
 
 import imageUrlBuilder from "@sanity/image-url";
 
+import Menu from "./Menu";
 import MobileMenu from "./MobileMenu";
 
 import {
   StyledGallery,
   ImagesContainer,
   GalleryContainer,
-  GalleryMenu,
 } from "./gallery.styled.js";
 
 const Gallery = () => {
   const [images, setImages] = useState(null);
+
+  const [category, setCategory] = useState(null);
 
   const [isMobile, setIsMobile] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -40,6 +40,21 @@ const Gallery = () => {
     setImages(images);
   };
 
+  const fetchByCategory = async (category) => {
+    let images = [];
+
+    await sanityClient
+      .fetch(`*[_type=='galleryImage' && category=='${category}' ]`)
+      .then((res) => {
+        return res.map((item) => {
+          return item.images.map((item) => {
+            return images.push(item.asset._ref);
+          });
+        });
+      });
+    setImages(images);
+  };
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 900) {
@@ -52,19 +67,21 @@ const Gallery = () => {
     } else setIsMobile(false);
 
     window.addEventListener("resize", handleResize);
-    fetchAll();
+
+    if (category === null || category === "all") fetchAll();
+    else fetchByCategory(category);
 
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [category]);
 
   return (
     <GalleryContainer>
       {isMobile ? (
         <MobileMenu isOpen={isMobileOpen} setIsOpen={setIsMobileOpen} />
       ) : (
-        <Menu />
+        <Menu setCategory={setCategory} />
       )}
       <StyledGallery>
         <ImagesContainer>
@@ -78,31 +95,6 @@ const Gallery = () => {
         </ImagesContainer>
       </StyledGallery>
     </GalleryContainer>
-  );
-};
-
-const Menu = () => {
-  return (
-    <GalleryMenu>
-      <nav>
-        <ul>
-          <li>
-            <h1>
-              <span>SP</span> PROJEKT
-            </h1>
-          </li>
-          <li>Wszystko</li>
-          <li>Jednorodzinne</li>
-          <li>Wielorodzinne</li>
-          <li>Użyteczności publicznej</li>
-          <li>Usługowe</li>
-
-          <li>
-            <NavLink to="/">Powrót</NavLink>
-          </li>
-        </ul>
-      </nav>
-    </GalleryMenu>
   );
 };
 
