@@ -25,6 +25,10 @@ export const ImagesContainer = styled.div`
     width: 100%;
     height: 100%;
     cursor: pointer;
+    transition: 0.2s;
+  }
+  & > *:hover {
+    transform: scale(1.1);
   }
 
   @media (max-width: 1400px) {

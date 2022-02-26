@@ -4,9 +4,14 @@ import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { MenuMobile, OpenMobileNav } from "./gallery.styled.js";
 
 const MobileMenu = (props) => {
-  const { isOpen, setIsOpen } = props;
+  const { isOpen, setIsOpen, setCategory } = props;
 
-  const handleClick = () => {
+  const handleToggler = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleClick = (category) => {
+    setCategory(category);
     setIsOpen(!isOpen);
   };
 
@@ -19,18 +24,21 @@ const MobileMenu = (props) => {
         <FontAwesomeIcon
           icon={isOpen ? faTimes : faBars}
           className="bar"
-          onClick={handleClick}
+          onClick={handleToggler}
         />
       </div>
 
       {isOpen ? (
         <OpenMobileNav>
           <ul>
-            <li>Wszystko</li>
-            <li>Jednorodzinne</li>
-            <li>Wielorodzinne</li>
-            <li>Użyteczności publicznej</li>
-            <li>Usługowe</li>
+            <li onClick={() => handleClick("all")}>Wszystko</li>
+            <li onClick={() => handleClick("jednorodzinny")}>Jednorodzinne</li>
+            <li onClick={() => handleClick("wielorodzinny")}>Wielorodzinne</li>
+            <li onClick={() => handleClick("uslugi")}>
+              Użyteczności publicznej
+            </li>
+            <li onClick={() => handleClick("uslugi")}>Usługowe</li>
+
             <li>
               <a href="/">Powrót</a>
             </li>
