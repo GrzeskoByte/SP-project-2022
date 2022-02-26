@@ -16,7 +16,7 @@ import {
 const Gallery = () => {
   const [images, setImages] = useState(null);
 
-  const [category, setCategory] = useState(null);
+  const [category, setCategory] = useState("all");
 
   const [isMobile, setIsMobile] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -55,6 +55,10 @@ const Gallery = () => {
     setImages(images);
   };
 
+  const handleShowImage = (e) => {
+    console.log(e.target);
+  };
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 900) {
@@ -68,7 +72,7 @@ const Gallery = () => {
 
     window.addEventListener("resize", handleResize);
 
-    if (category === null || category === "all") fetchAll();
+    if (category === "all") fetchAll();
     else fetchByCategory(category);
 
     return () => {
@@ -79,7 +83,11 @@ const Gallery = () => {
   return (
     <GalleryContainer>
       {isMobile ? (
-        <MobileMenu isOpen={isMobileOpen} setIsOpen={setIsMobileOpen} />
+        <MobileMenu
+          isOpen={isMobileOpen}
+          setIsOpen={setIsMobileOpen}
+          setCategory={setCategory}
+        />
       ) : (
         <Menu setCategory={setCategory} />
       )}
@@ -88,7 +96,12 @@ const Gallery = () => {
           {images !== null
             ? images.map((imgUrl, index) => {
                 return (
-                  <img src={urlFor(imgUrl).url()} key={index} alt="building" />
+                  <img
+                    src={urlFor(imgUrl).url()}
+                    key={index}
+                    alt="building"
+                    onClick={handleShowImage}
+                  />
                 );
               })
             : ""}
