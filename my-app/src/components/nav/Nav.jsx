@@ -66,19 +66,19 @@ const DesktopNav = (props) => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/">Oferta</NavLink>
+          <a href="#offer">Oferta</a>
         </li>
         <li>
-          <NavLink to="/">O Nas</NavLink>
+          <a href="#aboutUs">O Nas</a>
         </li>
         <li>
-          <NavLink to="/">Technologie</NavLink>
+          <a href="#techs">Technologie</a>
         </li>
         <li>
           <NavLink to="/gallery">Galeria</NavLink>
         </li>
         <li>
-          <NavLink to="/">Kontakt</NavLink>
+          <a href="#contact">Kontakt</a>
         </li>
       </ul>
       <AnimateBar levelOfFill={props.fill} />
@@ -125,19 +125,19 @@ const MobileNav = (props) => {
       <StyledMobileNav isOpen={isOpen}>
         <ul>
           <li>
-            <NavLink to="/">Oferta</NavLink>
+            <a href="#offer">Oferta</a>
           </li>
           <li>
-            <NavLink to="/">O Nas</NavLink>
+            <a href="#aboutUs">O Nas</a>
           </li>
           <li>
-            <NavLink to="/">Technologie</NavLink>
+            <a href="#techs">Technologie</a>
           </li>
           <li>
             <NavLink to="/gallery">Galeria</NavLink>
           </li>
           <li>
-            <NavLink to="/">Kontakt</NavLink>
+            <a href="#contact">Kontakt</a>
           </li>
         </ul>
       </StyledMobileNav>

@@ -9,6 +9,8 @@ const Footer = () => {
   return (
     <StyledFooter>
       <div className="links">
+        <a name="contact"></a>
+
         <ul>
           <li>Polityka prywatności</li>
           <li>FAQ</li>

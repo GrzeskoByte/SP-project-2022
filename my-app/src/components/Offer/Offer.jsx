@@ -6,8 +6,9 @@ import { faListCheck } from "@fortawesome/free-solid-svg-icons";
 
 const Offer = () => {
   return (
-    <StyledOffer>
+    <StyledOffer name="offer">
       <div id="firstOfferSec">
+        <a name="offer"></a>
         <ul>
           <li>
             <h2>Nasza Oferta</h2>
