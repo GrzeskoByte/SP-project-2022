@@ -34,9 +34,10 @@ const MobileMenu = (props) => {
             <li onClick={() => handleClick("all")}>Wszystko</li>
             <li onClick={() => handleClick("jednorodzinny")}>Jednorodzinne</li>
             <li onClick={() => handleClick("wielorodzinny")}>Wielorodzinne</li>
+            <li onClick={() => handleClick("uslugi")}>
+              Użyteczności publicznej
+            </li>
             <li onClick={() => handleClick("uslugi")}>Usługowe</li>
-            <li onClick={() => handleClick("biurowy")}>Biurowe</li>
-            <li onClick={() => handleClick("letniskowy")}>Letniskowy</li>
 
             <li>
               <a href="/">Powrót</a>

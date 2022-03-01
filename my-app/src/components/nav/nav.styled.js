@@ -61,6 +61,10 @@ export const NavContainer = styled.nav`
       font-size: 0.7rem;
     }
   }
+
+  @media (max-width: 530px) {
+    display: none;
+  }
 `;
 
 export const AnimateBar = styled.div`
