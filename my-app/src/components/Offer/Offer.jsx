@@ -8,8 +8,12 @@ const Offer = () => {
   return (
     <StyledOffer name="offer">
       <div id="firstOfferSec">
-        <a name="offer"></a>
         <ul>
+          <li>
+            <a href="/" name="offer">
+              {"  "}
+            </a>
+          </li>
           <li>
             <h2>Nasza Oferta</h2>
           </li>

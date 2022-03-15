@@ -125,19 +125,29 @@ const MobileNav = (props) => {
       <StyledMobileNav isOpen={isOpen}>
         <ul>
           <li>
-            <a href="#offer">Oferta</a>
+            <a href="#offer" onClick={handleClick}>
+              Oferta
+            </a>
           </li>
           <li>
-            <a href="#aboutUs">O Nas</a>
+            <a href="#aboutUs" onClick={handleClick}>
+              O Nas
+            </a>
           </li>
           <li>
-            <a href="#techs">Technologie</a>
+            <a href="#techs" onClick={handleClick}>
+              Technologie
+            </a>
           </li>
           <li>
-            <NavLink to="/gallery">Galeria</NavLink>
+            <NavLink to="/gallery" onClick={handleClick}>
+              Galeria
+            </NavLink>
           </li>
           <li>
-            <a href="#contact">Kontakt</a>
+            <a href="#footer" onClick={handleClick}>
+              Kontakt
+            </a>
           </li>
         </ul>
       </StyledMobileNav>

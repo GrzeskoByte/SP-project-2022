@@ -16,7 +16,6 @@ const Tech = () => {
   };
   return (
     <StyledTech>
-      <a name="techs"></a>
       <Card title="AutoCad" content={texts.autoCad} link={links.autoCad} />
       <Card title="Revit" content={texts.autoCad} link={links.revit} />
       <Card title="CadSis" content={texts.autoCad} link={links.cadSis} />
@@ -30,7 +29,8 @@ const Card = (props) => {
     <StyledCard>
       <h2>{title}</h2>
       <p>{content}</p>
-      <a href={link}>
+
+      <a href={link} name="techs">
         <button>Więcej</button>
       </a>
     </StyledCard>
