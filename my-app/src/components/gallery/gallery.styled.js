@@ -52,11 +52,33 @@ export const GalleryContainer = styled.section`
   align-items: center;
   width: 100vw;
   position: relative;
+  dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    & > img {
+      width: 50%;
+    }
+    & > .closeModal {
+      position: absolute;
+      top: 10px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+  }
 `;
 
 export const GalleryMenu = styled.aside`
   position: fixed;
-  top: 0;
+  top: 7vh;
   left: 0;
   height: 100vh;
   width: 29vw;
