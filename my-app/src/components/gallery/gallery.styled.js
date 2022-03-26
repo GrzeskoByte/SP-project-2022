@@ -59,6 +59,7 @@ export const GalleryContainer = styled.section`
     height: 100vh;
     width: 100vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.9);
@@ -73,6 +74,31 @@ export const GalleryContainer = styled.section`
       color: white;
       cursor: pointer;
     }
+  }
+`;
+export const SliderImagesContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  max-height: 15vh;
+  width: 100vw;
+
+  & > img {
+    margin: 0 10px;
+    height: 100%;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  & > img:hover {
+    border: 5px solid white;
+  }
+  & > svg {
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
   }
 `;
 
