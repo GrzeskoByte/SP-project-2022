@@ -22,8 +22,15 @@ import {
 } from "./gallery.styled.js";
 
 const Gallery = () => {
+  const [images, setImages] = useState(null);
+  const [captions, setCaptions] = useState(null);
+
+  const [category, setCategory] = useState("all");
+
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
   const reducer = (state, action) => {
-   
     switch (action.type) {
       case "showImage":
         return {
@@ -34,6 +41,16 @@ const Gallery = () => {
         return {
           ...state,
           isModalOpen: action.isModalOpen,
+        };
+      case "decrementIndex":
+        return {
+          index: state.index--,
+          ...state,
+        };
+      case "incrementIndex":
+        return {
+          index: state.index++,
+          ...state,
         };
       default:
         throw new Error((err) => console.log(err));
@@ -49,14 +66,6 @@ const Gallery = () => {
     const index = e.target.getAttribute("index");
     dispatch({ type: "showImage", index: index, isModalOpen: true });
   };
-
-  const [images, setImages] = useState(null);
-  const [captions, setCaptions] = useState(null);
-
-  const [category, setCategory] = useState("all");
-
-  const [isMobile, setIsMobile] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const builder = imageUrlBuilder(sanityClient);
 
@@ -153,6 +162,7 @@ const Gallery = () => {
           index={state.index}
           urlFor={urlFor}
           dispatch={dispatch}
+          handleShowImage={handleShowImage}
         />
       ) : null}
     </GalleryContainer>
@@ -160,7 +170,8 @@ const Gallery = () => {
 };
 
 const Slider = (props) => {
-  const { isModalOpen, images, index, urlFor, dispatch } = props;
+  const { isModalOpen, images, index, urlFor, dispatch, handleShowImage } =
+    props;
 
   return (
     <dialog open={isModalOpen}>
@@ -181,13 +192,42 @@ const Slider = (props) => {
       />
 
       <SliderImagesContainer>
-        <FontAwesomeIcon icon={faArrowLeft} />
+        <FontAwesomeIcon
+          icon={faArrowLeft}
+          onClick={() => dispatch({ type: "decrementIndex" })}
+        />
 
-        {/* <img src={`${urlFor(images[index - 1]).url()}`} alt="previousImage" />
-     <img src={`${urlFor(images[index]).url()}`} alt="currentImage" />
-     <img src={`${urlFor(images[index + 1]).url()}`} alt="nextImage" /> */}
+        <img
+          src={`${urlFor(
+            images[index - 1 < 0 ? images.length - 1 : index - 1]
+          ).url()}`}
+          alt="previousImage"
+          index={index - 1 < 0 ? images.length - 1 : index - 1}
+          onClick={handleShowImage}
+        />
+        <img
+          src={`${urlFor(images[index]).url()}`}
+          alt="currentImage"
+          index={index}
+          onClick={handleShowImage}
+          style={{ border: "2px solid white" }}
+        />
 
-        <FontAwesomeIcon icon={faArrowRight} />
+        <img
+          src={`${urlFor(
+            images[index === images.length - 1 ? 0 : index + 1]
+          ).url()}`}
+          alt="nextImage"
+          index={index === images.length - 1 ? 0 : index + 1}
+          onClick={handleShowImage}
+        />
+
+        <FontAwesomeIcon
+          icon={faArrowRight}
+          onClick={() => {
+            dispatch({ type: "incrementIndex" });
+          }}
+        />
       </SliderImagesContainer>
     </dialog>
   );
