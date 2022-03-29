@@ -36,15 +36,11 @@ const Gallery = () => {
           ...state,
           isModalOpen: action.isModalOpen,
         };
-      case "decrementIndex":
+
+      case "setIndex":
         return {
-          index: state.index--,
-          ...state,
-        };
-      case "incrementIndex":
-        return {
-          index: state.index++,
-          ...state,
+          index: action.index,
+          isModalOpen: state.isModalOpen,
         };
       default:
         throw new Error((err) => console.log(err));
