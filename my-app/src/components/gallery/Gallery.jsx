@@ -7,6 +7,10 @@ import imageUrlBuilder from "@sanity/image-url";
 import Menu from "./Menu";
 import MobileMenu from "./MobileMenu";
 
+// import fetchAll from "./helpers/fetchAll";
+// import fetchByCategory from "./helpers/fetchByCategory";
+// import urlFor from "./helpers/urlFor";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimes,
