@@ -1,24 +1,10 @@
 import styled from "styled-components";
 
-import img from "../../images/i30.jpg";
-
 export const StyledAboutUs = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: minmax(100px, auto);
   background-color: royalblue;
-
-  & > .firstOfferSec {
-    grid-column: 1;
-    grid-row: 1/6;
-    background: url(${img});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    @media (max-width: 1200px) {
-      grid-column: 0;
-    }
-  }
 
   & > .secondOfferSec {
     grid-column: 2;
@@ -51,5 +37,16 @@ export const StyledAboutUs = styled.section`
         margin-left: 0;
       }
     }
+  }
+`;
+export const FirstOfferSec = styled.div`
+  grid-column: 1;
+  grid-row: 1/6;
+  background: ${(props) => `url(${props.img})`};
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  @media (max-width: 1200px) {
+    grid-column: 0;
   }
 `;

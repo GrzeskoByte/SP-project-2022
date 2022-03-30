@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import img1 from "../../images/i18.jpg";
-import img2 from "../../images/i4.jpg";
-import img3 from "../../images/i6.jpg";
+import fetchByCategory from "../gallery/helpers/fetchByCategory";
+import urlFor from "../gallery/helpers/urlFor";
 
 import {
   StyledHeader,
@@ -17,7 +16,12 @@ import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
 
+  const [images, setImages] = useState(null);
+  const [captions, setCaptions] = useState(null);
+
   useEffect(() => {
+    fetchByCategory("header", setImages, setCaptions);
+
     const handleResize = () => {
       if (window.innerWidth < 530) {
         setIsVisible(false);
@@ -35,35 +39,45 @@ const Header = () => {
     };
   }, []);
 
-  return <>{isVisible ? <DesktopHeader /> : <MobileHeader />}</>;
+  return (
+    <>
+      {isVisible ? (
+        images ? (
+          <DesktopHeader images={images} />
+        ) : null
+      ) : images ? (
+        <MobileHeader images={images} />
+      ) : null}
+    </>
+  );
 };
-
-const DesktopHeader = () => {
+const DesktopHeader = ({ images }) => {
   return (
     <StyledHeader>
       <HeaderItem
-        imgUrl={img1}
-        heading={"Dom jednorodzinny"}
-        tags={{ tagOne: "Starogard Gdański", tagTwo: "6.08.2020" }}
+        imgUrl={images[0]}
+        heading={"Domy jednorodzinne"}
+        tags={{ tagOne: "Starogard Gdański", tagTwo: "więcej" }}
       />
       <HeaderItem
-        imgUrl={img2}
-        heading={"Dom wielorodzinny"}
-        tags={{ tagOne: "Płaczewo", tagTwo: "12.01.2021" }}
+        imgUrl={images[1]}
+        heading={"Domy wielorodzinne"}
+        tags={{ tagOne: "Płaczewo", tagTwo: "więcej" }}
       />
       <HeaderItem
-        imgUrl={img3}
-        heading={"Restauracje i obiekty rekreacyjne"}
-        tags={{ tagOne: "Żabno", tagTwo: "02.01.2022" }}
+        imgUrl={images[2]}
+        heading={"Restauracje i obiekty usługowe"}
+        tags={{ tagOne: "Żabno", tagTwo: "więcej" }}
       />
     </StyledHeader>
   );
 };
 
-const MobileHeader = () => {
+const MobileHeader = ({ images }) => {
+  console.log(images);
   return (
     <>
-      <StyledMobileHeader img={img1}>
+      <StyledMobileHeader img={urlFor(images[0]).url()}>
         <h2>Zbadaj ofertę</h2>
       </StyledMobileHeader>
     </>
@@ -75,7 +89,7 @@ const HeaderItem = (props) => {
 
   return (
     <>
-      <HeaderCard img={imgUrl}>
+      <HeaderCard img={urlFor(imgUrl).url()}>
         <Tags>
           <div>{tags.tagOne}</div>
           <div>

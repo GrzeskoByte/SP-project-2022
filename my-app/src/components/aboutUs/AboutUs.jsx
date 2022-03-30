@@ -1,10 +1,23 @@
-import React from "react";
-import { StyledAboutUs } from "./aboutUs.styled";
+import React, { useEffect, useState } from "react";
+import { StyledAboutUs, FirstOfferSec } from "./aboutUs.styled";
+
+import fetchByCategory from "../gallery/helpers/fetchByCategory";
+import urlFor from "../gallery/helpers/urlFor";
 
 const AboutUs = () => {
+  const [images, setImages] = useState(null);
+  const [captions, setCaptions] = useState(null);
+
+  useEffect(() => {
+    fetchByCategory("aboutUs", setImages, setCaptions);
+  }, []);
+
   return (
     <StyledAboutUs>
-      <div className="firstOfferSec"></div>
+      <FirstOfferSec
+        className="firstOfferSec"
+        img={images ? urlFor(images[0]).url() : null}
+      ></FirstOfferSec>
       <div className="secondOfferSec">
         <h2>
           {" "}

@@ -60,12 +60,22 @@ export const GalleryContainer = styled.section`
     width: 100vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.9);
-    & > img {
-      width: 50%;
+    & > .mainImage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70vw;
+      height: 70vh;
+      margin-top: 2vh;
+      overflow: hidden;
+      & > img {
+        min-width: 50vw;
+      }
     }
+
     & > .closeModal {
       position: absolute;
       top: 10px;
@@ -76,24 +86,28 @@ export const GalleryContainer = styled.section`
     }
   }
 `;
+
 export const SliderImagesContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
+  margin: 10px 10px 50px 10px;
   padding: 10px;
-  max-height: 15vh;
+  height: 30vh;
   width: 100vw;
 
   & > img {
     margin: 0 10px;
-    height: 100%;
+    height: 22vh;
+    width: 25vw;
     cursor: pointer;
     transition: 0.2s;
   }
+
   & > img:hover {
     border: 5px solid white;
   }
+
   & > svg {
     font-size: 2rem;
     color: white;

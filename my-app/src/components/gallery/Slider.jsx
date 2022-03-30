@@ -11,6 +11,9 @@ const Slider = (props) => {
   const { isModalOpen, images, index, urlFor, dispatch, handleShowImage } =
     props;
 
+  const decrementedIndex = index - 1 < 0 ? images.length - 1 : index - 1;
+  const incrementedIndex = index === images.length - 1 ? 0 : index + 1;
+
   return (
     <>
       {images ? (
@@ -23,31 +26,30 @@ const Slider = (props) => {
               dispatch({ type: "setModal", index: index, isModalOpen: false })
             }
           />
-
-          <img
-            src={urlFor(images[index]).url()}
-            key={index}
-            index={index}
-            alt="building"
-          />
-
+          <div className="mainImage">
+            <img
+              src={urlFor(images[index]).url()}
+              key={index}
+              index={index}
+              alt="building"
+            />
+          </div>
+          
           <SliderImagesContainer>
             <FontAwesomeIcon
               icon={faArrowLeft}
               onClick={() =>
                 dispatch({
                   type: "setIndex",
-                  index: index - 1 < 0 ? images.length - 1 : index - 1,
+                  index: decrementedIndex,
                 })
               }
             />
 
             <img
-              src={`${urlFor(
-                images[index - 1 < 0 ? images.length - 1 : index - 1]
-              ).url()}`}
+              src={`${urlFor(images[decrementedIndex]).url()}`}
               alt="previousImage"
-              index={index - 1 < 0 ? images.length - 1 : index - 1}
+              index={decrementedIndex}
               onClick={handleShowImage}
             />
             <img
@@ -59,11 +61,9 @@ const Slider = (props) => {
             />
 
             <img
-              src={`${urlFor(
-                images[index === images.length - 1 ? 0 : index + 1]
-              ).url()}`}
+              src={`${urlFor(images[incrementedIndex]).url()}`}
               alt="nextImage"
-              index={index === images.length - 1 ? 0 : index + 1}
+              index={incrementedIndex}
               onClick={handleShowImage}
             />
 
@@ -72,7 +72,7 @@ const Slider = (props) => {
               onClick={() => {
                 dispatch({
                   type: "setIndex",
-                  index: index === images.length - 1 ? 0 : index + 1,
+                  index: incrementedIndex,
                 });
               }}
             />
