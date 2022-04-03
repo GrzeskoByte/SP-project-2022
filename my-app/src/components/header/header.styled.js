@@ -76,13 +76,14 @@ export const StyledMobileHeader = styled.header`
   align-items: center;
   height: 50vh;
   width: 100%;
+  background-color: black;
   background: url(${(props) => props.img});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   color: white;
   text-transform: uppercase;
-
+  /* z-index: 10; */
   &::after {
     display: block;
     content: "";
@@ -91,7 +92,7 @@ export const StyledMobileHeader = styled.header`
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0);
     z-index: 2;
     cursor: pointer;
   }

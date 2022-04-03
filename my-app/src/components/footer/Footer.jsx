@@ -8,15 +8,6 @@ import { faEnvelope, faPhone, faHome } from "@fortawesome/free-solid-svg-icons";
 const Footer = () => {
   return (
     <StyledFooter>
-      <div className="links">
-        <a name="footer">
-          <ul>
-            <li>Polityka prywatności</li>
-            <li>FAQ</li>
-          </ul>
-        </a>
-      </div>
-
       <ContactList />
     </StyledFooter>
   );

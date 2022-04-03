@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 import {
   NavContainer,
@@ -99,6 +99,14 @@ const MobileNav = (props) => {
     transition: "0.5s",
   };
 
+  const memorizedLevelOfFill = useMemo(() => props.fill, [props.fill]);
+
+  useEffect(() => {
+    if (document.innerWidth < 530) {
+      setIsOpen((state) => !state);
+    }
+  }, []);
+
   return (
     <MobileNavContainer>
       <div>
@@ -120,7 +128,7 @@ const MobileNav = (props) => {
         />
       )}
 
-      <AnimateBar levelOfFill={props.fill} />
+      <AnimateBar levelOfFill={memorizedLevelOfFill} />
 
       <StyledMobileNav isOpen={isOpen}>
         <ul>

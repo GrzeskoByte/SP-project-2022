@@ -80,7 +80,7 @@ const Gallery = () => {
 
   return (
     <GalleryContainer>
-      {isMobile ? (
+      {isMobile && state.isModalOpen !== true ? (
         <MobileMenu
           isOpen={isMobileOpen}
           setIsOpen={setIsMobileOpen}

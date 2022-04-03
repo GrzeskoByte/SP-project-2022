@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
-  grid-auto-rows: minmax(100px, auto);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 15vh;
-  min-width: 550px;
+  min-width: 288px;
   background-color: black;
 
   & > div > ul {
     list-style: none;
   }
   & > div > ul > li {
+    margin: 7px 0;
     cursor: pointer;
   }
   & > div > ul > li:hover {

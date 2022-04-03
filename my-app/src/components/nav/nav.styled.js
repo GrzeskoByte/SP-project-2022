@@ -8,8 +8,9 @@ export const NavContainer = styled.nav`
   justify-content: center;
   height: 6vh;
   min-width: 1070px;
-  width: 100%;
+  width: 100vw;
   z-index: 4;
+  padding-right: 20px;
   & > ul {
     display: flex;
     justify-content: end;
@@ -86,7 +87,7 @@ export const MobileNavContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  width: 100%;
+  width: 100vw;
   height: 6vh;
   background-color: #fff;
   z-index: 4;

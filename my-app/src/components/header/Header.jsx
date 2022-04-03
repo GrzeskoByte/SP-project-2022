@@ -51,6 +51,7 @@ const Header = () => {
     </>
   );
 };
+
 const DesktopHeader = ({ images }) => {
   return (
     <StyledHeader>
@@ -62,24 +63,21 @@ const DesktopHeader = ({ images }) => {
       <HeaderItem
         imgUrl={images[1]}
         heading={"Domy wielorodzinne"}
-        tags={{ tagOne: "Płaczewo", tagTwo: "więcej" }}
+        tags={{ tagOne: "Starogard Gdański", tagTwo: "więcej" }}
       />
       <HeaderItem
         imgUrl={images[2]}
         heading={"Restauracje i obiekty usługowe"}
-        tags={{ tagOne: "Żabno", tagTwo: "więcej" }}
+        tags={{ tagOne: "Płaczewo", tagTwo: "więcej" }}
       />
     </StyledHeader>
   );
 };
 
 const MobileHeader = ({ images }) => {
-  console.log(images);
   return (
     <>
-      <StyledMobileHeader img={urlFor(images[0]).url()}>
-        <h2>Zbadaj ofertę</h2>
-      </StyledMobileHeader>
+      <StyledMobileHeader img={urlFor(images[0]).url()}></StyledMobileHeader>
     </>
   );
 };
@@ -92,9 +90,9 @@ const HeaderItem = (props) => {
       <HeaderCard img={urlFor(imgUrl).url()}>
         <Tags>
           <div>{tags.tagOne}</div>
-          <div>
+          {/* <div>
             {tags.tagTwo} <FontAwesomeIcon icon={faCalendar} />
-          </div>
+          </div> */}
         </Tags>
         <h3>{heading}</h3>
       </HeaderCard>

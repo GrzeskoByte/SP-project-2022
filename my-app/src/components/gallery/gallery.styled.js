@@ -63,6 +63,8 @@ export const GalleryContainer = styled.section`
     justify-content: space-evenly;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.9);
+    min-width: 420px;
+
     & > .mainImage {
       display: flex;
       justify-content: center;
@@ -75,7 +77,6 @@ export const GalleryContainer = styled.section`
         min-width: 50vw;
       }
     }
-
     & > .closeModal {
       position: absolute;
       top: 10px;
@@ -84,6 +85,14 @@ export const GalleryContainer = styled.section`
       color: white;
       cursor: pointer;
     }
+
+    @media (max-width: 600px) {
+      & > .mainImage {
+        & > img {
+          margin-top: 7vh;
+        }
+      }
+    }
   }
 `;
 
@@ -91,13 +100,11 @@ export const SliderImagesContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px 10px 50px 10px;
-  padding: 10px;
-  height: 30vh;
+  height: 17vh;
   width: 100vw;
-
+  min-width: 420px;
   & > img {
-    margin: 0 10px;
+    margin: 0 3px;
     height: 22vh;
     width: 25vw;
     cursor: pointer;
@@ -113,6 +120,19 @@ export const SliderImagesContainer = styled.div`
     color: white;
     cursor: pointer;
     margin: 10px;
+  }
+
+  @media (max-width: 950px) {
+    & > img {
+      height: 100%;
+      width: 31vw;
+    }
+  }
+  @media (max-width: 600px) {
+    & > img {
+      height: 100%;
+      width: 31vw;
+    }
   }
 `;
 

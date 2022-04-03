@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { StyledAboutUs, FirstOfferSec } from "./aboutUs.styled";
 
 import fetchByCategory from "../gallery/helpers/fetchByCategory";
