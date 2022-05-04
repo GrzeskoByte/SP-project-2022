@@ -34,25 +34,6 @@ export const StyledCard = styled(motion.div)`
     max-width: 70%;
   }
 
-  & > a {
-    margin: 15px;
-  }
-
-  & > a > button {
-    padding: 10px 17px;
-    border: none;
-    border-radius: 2px;
-    line-height: 2vh;
-    width: auto;
-    text-transform: capitalize;
-    font-style: oblique;
-    font-weight: bold;
-    letter-spacing: 1px;
-    background-color: black;
-    color: white;
-    cursor: pointer;
-  }
-
   @media (max-width: 1100px) {
     grid-column: 1/4;
 
@@ -81,4 +62,20 @@ export const StyledCard = styled(motion.div)`
       width: 50vw;
     }
   }
+`;
+
+export const StyledButton = styled.button`
+  margin: 15px;
+  padding: 10px 17px;
+  border: none;
+  border-radius: 2px;
+  line-height: 2vh;
+  width: auto;
+  text-transform: capitalize;
+  font-style: oblique;
+  font-weight: bold;
+  letter-spacing: 1px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
 `;
