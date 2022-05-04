@@ -25,6 +25,7 @@ const Tech = () => {
 
 const Card = (props) => {
   const { title, content, link } = props;
+
   return (
     <StyledCard>
       <h2>{title}</h2>

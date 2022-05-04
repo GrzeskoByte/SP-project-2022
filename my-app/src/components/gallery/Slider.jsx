@@ -36,7 +36,7 @@ const Slider = (props) => {
           </div>
 
           <SliderImagesContainer>
-            {/* <FontAwesomeIcon
+            <FontAwesomeIcon
               icon={faArrowLeft}
               onClick={() =>
                 dispatch({
@@ -44,7 +44,7 @@ const Slider = (props) => {
                   index: decrementedIndex,
                 })
               }
-            /> */}
+            />
 
             <img
               src={`${urlFor(images[decrementedIndex]).url()}`}
@@ -67,7 +67,7 @@ const Slider = (props) => {
               onClick={handleShowImage}
             />
 
-            {/* <FontAwesomeIcon
+            <FontAwesomeIcon
               icon={faArrowRight}
               onClick={() => {
                 dispatch({
@@ -75,7 +75,7 @@ const Slider = (props) => {
                   index: incrementedIndex,
                 });
               }}
-            /> */}
+            />
           </SliderImagesContainer>
         </dialog>
       ) : null}

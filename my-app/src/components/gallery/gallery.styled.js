@@ -63,7 +63,7 @@ export const GalleryContainer = styled.section`
     justify-content: space-evenly;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.9);
-    min-width: 420px;
+    min-width: 370px;
 
     & > .mainImage {
       display: flex;
@@ -93,6 +93,12 @@ export const GalleryContainer = styled.section`
         }
       }
     }
+
+    @media (max-width: 420px) {
+      & > .mainImage {
+        width: 90vw;
+      }
+    }
   }
 `;
 
@@ -102,7 +108,7 @@ export const SliderImagesContainer = styled.div`
   align-items: center;
   height: 17vh;
   width: 100vw;
-  min-width: 420px;
+  min-width: 370px;
   & > img {
     margin: 0 3px;
     height: 22vh;
@@ -116,10 +122,17 @@ export const SliderImagesContainer = styled.div`
   }
 
   & > svg {
+    position: absolute;
+    top: 70%;
+    left: calc(50% - 50px);
+
     font-size: 2rem;
     color: white;
     cursor: pointer;
     margin: 10px;
+  }
+  & > svg:nth-of-type(2) {
+    left: calc(50% - 5px);
   }
 
   @media (max-width: 950px) {
@@ -132,6 +145,14 @@ export const SliderImagesContainer = styled.div`
     & > img {
       height: 100%;
       width: 31vw;
+    }
+  }
+  @media (max-width: 420px) {
+    & > img:nth-of-type(2) {
+      display: none;
+    }
+    & > img {
+      width: 40%;
     }
   }
 `;

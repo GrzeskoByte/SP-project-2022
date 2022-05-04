@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import { Link } from "react-router-dom";
+
 import fetchByCategory from "../gallery/helpers/fetchByCategory";
 import urlFor from "../gallery/helpers/urlFor";
 
@@ -9,9 +11,6 @@ import {
   Tags,
   StyledMobileHeader,
 } from "./header.styled";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -58,11 +57,12 @@ const DesktopHeader = ({ images }) => {
       <HeaderItem
         imgUrl={images[0]}
         heading={"Domy jednorodzinne"}
-        tags={{ tagOne: "Starogard Gdański", tagTwo: "więcej" }}
+        tags={{ tagOne: "Gdynia", tagTwo: "więcej" }}
+        Link={"/gallery"}
       />
       <HeaderItem
         imgUrl={images[1]}
-        heading={"Domy wielorodzinne"}
+        heading={"Gdynia"}
         tags={{ tagOne: "Starogard Gdański", tagTwo: "więcej" }}
       />
       <HeaderItem
@@ -87,15 +87,20 @@ const HeaderItem = (props) => {
 
   return (
     <>
-      <HeaderCard img={urlFor(imgUrl).url()}>
-        <Tags>
-          <div>{tags.tagOne}</div>
-          {/* <div>
+      <Link
+        to="/gallery"
+        style={{ textDecoration: "none", height: "100%", flexGrow: "1" }}
+      >
+        <HeaderCard img={urlFor(imgUrl).url()}>
+          <Tags>
+            <div>{tags.tagOne}</div>
+            {/* <div>
             {tags.tagTwo} <FontAwesomeIcon icon={faCalendar} />
           </div> */}
-        </Tags>
-        <h3>{heading}</h3>
-      </HeaderCard>
+          </Tags>
+          <h3>{heading}</h3>
+        </HeaderCard>
+      </Link>
     </>
   );
 };

@@ -10,7 +10,7 @@ export const NavContainer = styled.nav`
   min-width: 1070px;
   width: 100vw;
   z-index: 4;
-  padding-right: 20px;
+  margin-right: 20px;
   & > ul {
     display: flex;
     justify-content: end;

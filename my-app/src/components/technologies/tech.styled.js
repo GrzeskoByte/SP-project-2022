@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { motion } from "framer-motion";
+
 export const StyledTech = styled.section`
   padding: 10px 30px 10px 20px;
   display: grid;
@@ -10,7 +12,7 @@ export const StyledTech = styled.section`
   grid-gap: 20px;
   grid-auto-rows: minmax(100px, auto);
 `;
-export const StyledCard = styled.div`
+export const StyledCard = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,7 +75,7 @@ export const StyledCard = styled.div`
     }
     &:nth-of-type(3) {
       grid-column: 1/7;
-      grid-row: 7/10  ;
+      grid-row: 7/10;
     }
     & > a > button {
       width: 50vw;
