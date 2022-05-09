@@ -1,0 +1,24 @@
+{
+  "name": "Sample",
+  "icons": [
+    {
+      "src": "./favi.png",
+      "sizes": "128x128",
+      "type": "128x128"
+    },
+    {
+      "src": "./favi.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "./favi.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
