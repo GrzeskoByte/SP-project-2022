@@ -62,7 +62,7 @@ const DesktopHeader = ({ images }) => {
       />
       <HeaderItem
         imgUrl={images[1]}
-        heading={"Gdynia"}
+        heading={"Domy wielorodzinne"}
         tags={{ tagOne: "Starogard Gdański", tagTwo: "więcej" }}
       />
       <HeaderItem
