@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/SP-project-2022/static/css/main.ded47686.css",
+    "main.js": "/SP-project-2022/static/js/main.1230b795.js",
+    "index.html": "/SP-project-2022/index.html",
+    "main.ded47686.css.map": "/SP-project-2022/static/css/main.ded47686.css.map",
+    "main.1230b795.js.map": "/SP-project-2022/static/js/main.1230b795.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ded47686.css",
+    "static/js/main.1230b795.js"
+  ]
+}
